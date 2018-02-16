@@ -63,7 +63,7 @@ module.exports.statusPage = (event, context, callback) => {
   Promise.all([
     axios(`https://api.nanopool.org/v1/eth/user/${process.env.ETH_WALLET_ADDRESS}`),
     axios(`https://api.nanopool.org/v1/eth/prices`),
-    axios(`https://api.nanopool.org/v1/eth/paymentsday/${process.env.ETH_WALLET_ADDRESS}`),
+    axios(`https://api.nanopool.org/v1/eth/payments/${process.env.ETH_WALLET_ADDRESS}`),
     axios(`https://api.nanopool.org/v1/eth/usersettings/${process.env.ETH_WALLET_ADDRESS}`),
     axios(`https://api.nanopool.org/v1/eth/history/${process.env.ETH_WALLET_ADDRESS}`)
   ])
