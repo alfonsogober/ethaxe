@@ -1,4 +1,4 @@
-# Ethaxe
+# Ethaxe ⛏
 
 Lambda functions for your Ethereum mining rig. 
 
