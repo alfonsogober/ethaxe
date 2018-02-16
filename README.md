@@ -78,4 +78,5 @@ Open that URL in a browser to see your new stats page. Bookmark it, share it, re
 
 ```
 yarn test
+open file://$(pwd)/index.html
 ```

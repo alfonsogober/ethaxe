@@ -1,4 +1,5 @@
 node_modules
 gdax-node/node_modules
 .serverless
+index.html
 credentials.json
