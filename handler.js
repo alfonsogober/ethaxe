@@ -15,7 +15,7 @@ module.exports.nanopoolScan = (event, context, callback) => {
         let confirmedPayments = _.filter(payments, { confirmed: true })
         if (confirmedPayments.length) {
           Promise.map(confirmedPayments, (payment) => {
-            let size = ((payment.amount / 100) * process.env.SELL_PERCENTAGE).toPrecision(2)
+            let size = ((payment.amount / 100) * process.env.SELL_PERCENTAGE).toFixed(2)
             let params = {
               type: 'market',
               'product_id': `ETH-${process.env.FIAT_TYPE}`,
@@ -35,7 +35,7 @@ module.exports.nanopoolScan = (event, context, callback) => {
                     .then(({ data }) => {
                       let price = data.data[`price_${process.env.FIAT_TYPE.toLowerCase()}`]
                       return authedClient.withdrawToPaymentMethod({
-                        amount: size * price,
+                        amount: (size * price).toFixed(2),
                         currency: process.env.FIAT_TYPE,
                         'payment_method_id': paymentMethod.id
                       })
