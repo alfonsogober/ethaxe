@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mining Stats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+  </head>
+  <body class="section">
+    <div class="container content">
+      <h1 class="title"><strong>Total Revenue:</strong> $56.08 (Ξ0.0599780581)</h1>
+      <p><strong>ETH/USD Price:</strong> $934.96</p>
+      <p><strong>Unpaid Balance:</strong> $8.92 (Ξ0.00953852)</p>
+      <p><strong>Next Payout:</strong> Wednesday at 9:59 AM (in 6 days - 9.5% complete)</p>
+      <a href="https://eth.nanopool.org/account/0xA1d649B476F1910568F71049ceCA4fe1093525Df">Nanopool Dashboard</a> | <a href="http://1c4fed.ethosdistro.com/">EthOS Dashboard</a>
+      <br />
+      <hr />
+      <h2 class="subtitle">Mining Investment</h2>
+      <p><strong>Total Investment:</strong> $6332.02</p>
+      <p><strong>Break Even:</strong> 04/09/2019 (in a year - 0.89% complete)</p>
+      <p><strong>Daily Earnings:</strong> $15.15 | <strong>Weekly Earnings:</strong> $106.08 | <strong>Monthly Earnings:</strong> $454.63</p>
+      <h2 class="subtitle">Hash Rate</h2>
+      <svg id="hashrate" width="960" height="250"></svg>
+      <p><strong>Current:</strong> 187.0 MH/s</p>
+      <p><strong>Average (24h):</strong> 177.6 MH/s</p>
+      <h2 class="subtitle">Workers (2)</h2>
+      <div>
+        <p><strong>ID:</strong> 3ccaff</p>
+        <p><strong>Current Hash Rate:</strong> 0.0</p>
+        <p><strong>Last Share:</strong> a few seconds ago</p>
+      </div>,<div>
+        <p><strong>ID:</strong> 4e442c</p>
+        <p><strong>Current Hash Rate:</strong> 187.0</p>
+        <p><strong>Last Share:</strong> a few seconds ago</p>
+      </div>
+      <h2 class="subtitle">Payments (1)</h2>
+      <div>
+        <p><strong>Date:</strong> 15 2nd 2018</p>
+        <p><strong>txHash:</strong> 0xa04408dbdb1791769e09913a6282fad9426c85c8ff9b7988b902b9d79cd5d1ca</p>
+        <p><strong>Amount:</strong> Ξ0.05044 ($47.16)</p>
+        <p><strong>Confirmed:</strong> true</p>
+      </div>
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+      var parseTime = d3.timeParse("%x %X");
+      var data = ([{"unix":1518650400000,"date":"02/14/2018 06:20:00 pm","hashrate":0},{"date":"02/14/2018 06:30:00 pm","hashrate":187,"unix":1518651000000},{"date":"02/14/2018 07:20:00 pm","hashrate":17,"unix":1518654000000},{"date":"02/14/2018 07:30:00 pm","hashrate":136,"unix":1518654600000},{"date":"02/14/2018 08:30:00 pm","hashrate":119,"unix":1518658200000},{"date":"02/14/2018 08:40:00 pm","hashrate":68,"unix":1518658800000},{"date":"02/14/2018 08:50:00 pm","hashrate":119,"unix":1518659400000},{"date":"02/14/2018 09:00:00 pm","hashrate":153,"unix":1518660000000},{"date":"02/14/2018 09:10:00 pm","hashrate":17,"unix":1518660600000},{"date":"02/14/2018 09:20:00 pm","hashrate":187,"unix":1518661200000},{"date":"02/14/2018 09:30:00 pm","hashrate":289,"unix":1518661800000},{"date":"02/14/2018 09:40:00 pm","hashrate":187,"unix":1518662400000},{"date":"02/14/2018 09:50:00 pm","hashrate":170,"unix":1518663000000},{"date":"02/14/2018 10:00:00 pm","hashrate":153,"unix":1518663600000},{"date":"02/14/2018 10:10:00 pm","hashrate":119,"unix":1518664200000},{"date":"02/14/2018 10:20:00 pm","hashrate":153,"unix":1518664800000},{"date":"02/14/2018 10:30:00 pm","hashrate":170,"unix":1518665400000},{"date":"02/14/2018 10:40:00 pm","hashrate":136,"unix":1518666000000},{"date":"02/14/2018 10:50:00 pm","hashrate":255,"unix":1518666600000},{"date":"02/14/2018 11:00:00 pm","hashrate":153,"unix":1518667200000},{"date":"02/14/2018 11:10:00 pm","hashrate":187,"unix":1518667800000},{"date":"02/14/2018 11:20:00 pm","hashrate":187,"unix":1518668400000},{"date":"02/14/2018 11:30:00 pm","hashrate":136,"unix":1518669000000},{"date":"02/14/2018 11:40:00 pm","hashrate":0,"unix":1518669600000},{"date":"02/15/2018 12:00:00 am","hashrate":102,"unix":1518670800000},{"date":"02/15/2018 12:10:00 am","hashrate":187,"unix":1518671400000},{"date":"02/15/2018 12:20:00 am","hashrate":221,"unix":1518672000000},{"date":"02/15/2018 12:30:00 am","hashrate":51,"unix":1518672600000},{"date":"02/15/2018 12:40:00 am","hashrate":119,"unix":1518673200000},{"date":"02/15/2018 12:50:00 am","hashrate":187,"unix":1518673800000},{"date":"02/15/2018 01:00:00 am","hashrate":238,"unix":1518674400000},{"date":"02/15/2018 01:10:00 am","hashrate":170,"unix":1518675000000},{"date":"02/15/2018 01:20:00 am","hashrate":153,"unix":1518675600000},{"date":"02/15/2018 01:30:00 am","hashrate":170,"unix":1518676200000},{"date":"02/15/2018 01:40:00 am","hashrate":255,"unix":1518676800000},{"date":"02/15/2018 01:50:00 am","hashrate":187,"unix":1518677400000},{"date":"02/15/2018 02:00:00 am","hashrate":255,"unix":1518678000000},{"date":"02/15/2018 02:10:00 am","hashrate":238,"unix":1518678600000},{"date":"02/15/2018 02:20:00 am","hashrate":136,"unix":1518679200000},{"date":"02/15/2018 02:30:00 am","hashrate":170,"unix":1518679800000},{"date":"02/15/2018 02:40:00 am","hashrate":170,"unix":1518680400000},{"date":"02/15/2018 02:50:00 am","hashrate":102,"unix":1518681000000},{"date":"02/15/2018 03:00:00 am","hashrate":153,"unix":1518681600000},{"date":"02/15/2018 03:10:00 am","hashrate":255,"unix":1518682200000},{"date":"02/15/2018 03:20:00 am","hashrate":153,"unix":1518682800000},{"date":"02/15/2018 03:30:00 am","hashrate":221,"unix":1518683400000},{"date":"02/15/2018 03:40:00 am","hashrate":255,"unix":1518684000000},{"date":"02/15/2018 03:50:00 am","hashrate":221,"unix":1518684600000},{"date":"02/15/2018 04:00:00 am","hashrate":289,"unix":1518685200000},{"date":"02/15/2018 04:10:00 am","hashrate":221,"unix":1518685800000},{"date":"02/15/2018 04:20:00 am","hashrate":272,"unix":1518686400000},{"date":"02/15/2018 04:30:00 am","hashrate":187,"unix":1518687000000},{"date":"02/15/2018 04:40:00 am","hashrate":221,"unix":1518687600000},{"date":"02/15/2018 04:50:00 am","hashrate":119,"unix":1518688200000},{"date":"02/15/2018 05:00:00 am","hashrate":119,"unix":1518688800000},{"date":"02/15/2018 05:10:00 am","hashrate":272,"unix":1518689400000},{"date":"02/15/2018 05:20:00 am","hashrate":221,"unix":1518690000000},{"date":"02/15/2018 05:30:00 am","hashrate":153,"unix":1518690600000},{"date":"02/15/2018 05:40:00 am","hashrate":153,"unix":1518691200000},{"date":"02/15/2018 05:50:00 am","hashrate":170,"unix":1518691800000},{"date":"02/15/2018 06:00:00 am","hashrate":221,"unix":1518692400000},{"date":"02/15/2018 06:10:00 am","hashrate":153,"unix":1518693000000},{"date":"02/15/2018 06:20:00 am","hashrate":323,"unix":1518693600000},{"date":"02/15/2018 06:30:00 am","hashrate":170,"unix":1518694200000},{"date":"02/15/2018 06:40:00 am","hashrate":136,"unix":1518694800000},{"date":"02/15/2018 06:50:00 am","hashrate":170,"unix":1518695400000},{"date":"02/15/2018 07:00:00 am","hashrate":204,"unix":1518696000000},{"date":"02/15/2018 07:10:00 am","hashrate":238,"unix":1518696600000},{"date":"02/15/2018 07:20:00 am","hashrate":119,"unix":1518697200000},{"date":"02/15/2018 07:30:00 am","hashrate":187,"unix":1518697800000},{"date":"02/15/2018 07:40:00 am","hashrate":187,"unix":1518698400000},{"date":"02/15/2018 07:50:00 am","hashrate":238,"unix":1518699000000},{"date":"02/15/2018 08:00:00 am","hashrate":289,"unix":1518699600000},{"date":"02/15/2018 08:10:00 am","hashrate":136,"unix":1518700200000},{"date":"02/15/2018 08:20:00 am","hashrate":238,"unix":1518700800000},{"date":"02/15/2018 08:30:00 am","hashrate":136,"unix":1518701400000},{"date":"02/15/2018 08:40:00 am","hashrate":204,"unix":1518702000000},{"date":"02/15/2018 08:50:00 am","hashrate":272,"unix":1518702600000},{"date":"02/15/2018 09:00:00 am","hashrate":187,"unix":1518703200000},{"date":"02/15/2018 09:10:00 am","hashrate":187,"unix":1518703800000},{"date":"02/15/2018 09:20:00 am","hashrate":153,"unix":1518704400000},{"date":"02/15/2018 09:30:00 am","hashrate":255,"unix":1518705000000},{"date":"02/15/2018 09:40:00 am","hashrate":323,"unix":1518705600000},{"date":"02/15/2018 09:50:00 am","hashrate":221,"unix":1518706200000},{"date":"02/15/2018 10:00:00 am","hashrate":255,"unix":1518706800000},{"date":"02/15/2018 10:10:00 am","hashrate":119,"unix":1518707400000},{"date":"02/15/2018 10:20:00 am","hashrate":102,"unix":1518708000000},{"date":"02/15/2018 10:30:00 am","hashrate":238,"unix":1518708600000},{"date":"02/15/2018 10:40:00 am","hashrate":187,"unix":1518709200000},{"date":"02/15/2018 10:50:00 am","hashrate":170,"unix":1518709800000},{"date":"02/15/2018 11:00:00 am","hashrate":153,"unix":1518710400000},{"date":"02/15/2018 11:10:00 am","hashrate":119,"unix":1518711000000},{"date":"02/15/2018 11:20:00 am","hashrate":187,"unix":1518711600000},{"date":"02/15/2018 11:30:00 am","hashrate":136,"unix":1518712200000},{"date":"02/15/2018 11:40:00 am","hashrate":136,"unix":1518712800000},{"date":"02/15/2018 11:50:00 am","hashrate":221,"unix":1518713400000},{"date":"02/15/2018 12:00:00 pm","hashrate":187,"unix":1518714000000},{"date":"02/15/2018 12:10:00 pm","hashrate":85,"unix":1518714600000},{"date":"02/15/2018 12:20:00 pm","hashrate":85,"unix":1518715200000},{"date":"02/15/2018 12:30:00 pm","hashrate":272,"unix":1518715800000},{"date":"02/15/2018 12:40:00 pm","hashrate":102,"unix":1518716400000},{"date":"02/15/2018 12:50:00 pm","hashrate":153,"unix":1518717000000},{"date":"02/15/2018 01:00:00 pm","hashrate":170,"unix":1518717600000},{"date":"02/15/2018 01:10:00 pm","hashrate":187,"unix":1518718200000},{"date":"02/15/2018 01:20:00 pm","hashrate":204,"unix":1518718800000},{"date":"02/15/2018 01:30:00 pm","hashrate":102,"unix":1518719400000},{"date":"02/15/2018 01:40:00 pm","hashrate":221,"unix":1518720000000},{"date":"02/15/2018 01:50:00 pm","hashrate":221,"unix":1518720600000},{"date":"02/15/2018 02:00:00 pm","hashrate":187,"unix":1518721200000},{"date":"02/15/2018 02:10:00 pm","hashrate":119,"unix":1518721800000},{"date":"02/15/2018 02:20:00 pm","hashrate":272,"unix":1518722400000},{"date":"02/15/2018 02:30:00 pm","hashrate":289,"unix":1518723000000},{"date":"02/15/2018 02:40:00 pm","hashrate":68,"unix":1518723600000},{"date":"02/15/2018 02:50:00 pm","hashrate":136,"unix":1518724200000},{"date":"02/15/2018 03:00:00 pm","hashrate":221,"unix":1518724800000},{"date":"02/15/2018 03:10:00 pm","hashrate":153,"unix":1518725400000},{"date":"02/15/2018 03:20:00 pm","hashrate":357,"unix":1518726000000},{"date":"02/15/2018 03:30:00 pm","hashrate":187,"unix":1518726600000},{"date":"02/15/2018 03:40:00 pm","hashrate":272,"unix":1518727200000},{"date":"02/15/2018 03:50:00 pm","hashrate":221,"unix":1518727800000},{"date":"02/15/2018 04:00:00 pm","hashrate":153,"unix":1518728400000},{"date":"02/15/2018 04:10:00 pm","hashrate":255,"unix":1518729000000},{"date":"02/15/2018 04:20:00 pm","hashrate":238,"unix":1518729600000},{"date":"02/15/2018 04:30:00 pm","hashrate":170,"unix":1518730200000},{"date":"02/15/2018 04:40:00 pm","hashrate":272,"unix":1518730800000},{"date":"02/15/2018 04:50:00 pm","hashrate":170,"unix":1518731400000},{"date":"02/15/2018 05:00:00 pm","hashrate":68,"unix":1518732000000},{"date":"02/15/2018 05:10:00 pm","hashrate":255,"unix":1518732600000},{"date":"02/15/2018 05:20:00 pm","hashrate":306,"unix":1518733200000},{"date":"02/15/2018 05:30:00 pm","hashrate":238,"unix":1518733800000},{"date":"02/15/2018 05:40:00 pm","hashrate":136,"unix":1518734400000},{"date":"02/15/2018 05:50:00 pm","hashrate":153,"unix":1518735000000},{"date":"02/15/2018 06:00:00 pm","hashrate":136,"unix":1518735600000},{"date":"02/15/2018 06:10:00 pm","hashrate":170,"unix":1518736200000},{"date":"02/15/2018 06:20:00 pm","hashrate":119,"unix":1518736800000},{"date":"02/15/2018 06:30:00 pm","hashrate":187,"unix":1518737400000},{"date":"02/15/2018 06:40:00 pm","hashrate":170,"unix":1518738000000},{"date":"02/15/2018 06:50:00 pm","hashrate":170,"unix":1518738600000},{"date":"02/15/2018 07:00:00 pm","hashrate":187,"unix":1518739200000},{"date":"02/15/2018 07:10:00 pm","hashrate":272,"unix":1518739800000},{"date":"02/15/2018 07:20:00 pm","hashrate":170,"unix":1518740400000},{"date":"02/15/2018 07:30:00 pm","hashrate":187,"unix":1518741000000},{"date":"02/15/2018 07:40:00 pm","hashrate":221,"unix":1518741600000},{"date":"02/15/2018 07:50:00 pm","hashrate":221,"unix":1518742200000},{"unix":1518742200000,"date":"02/15/2018 07:50:00 pm","hashrate":0}])
+        .map(function (item) {
+          item.date = parseTime(item.date)
+          return item
+        })
+      
+      drawHashrate()
+
+      function drawHashrate () {
+        var svg = d3.select("#hashrate"),
+          margin = {top: 20, right: 20, bottom: 30, left: 50},
+          width = +svg.attr("width") - margin.left - margin.right,
+          height = +svg.attr("height") - margin.top - margin.bottom,
+          g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scaleTime()
+            .rangeRound([0, width]);
+
+        var y = d3.scaleLinear()
+            .rangeRound([height, 0]);
+
+        var line = d3.line()
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d.hashrate); });
+
+        x.domain(d3.extent(data, function(d) {
+          return d.date;
+        }));
+        y.domain(d3.extent(data, function(d) { return d.hashrate; }));
+
+        g.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .select(".domain")
+            .remove();
+
+        g.append("g")
+            .call(d3.axisLeft(y))
+            .append("text")
+            .attr("fill", "#000")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text("Hashrate (MH/s)");
+
+        g.append("path")
+            .datum(data)
+            .attr("fill", "purple")
+            .attr("stroke", "purple")
+            .attr("stroke-linejoin", "round")
+            .attr("stroke-linecap", "round")
+            .attr("stroke-width", 1.5)
+            .attr("d", line);
+      }
+      
+    </script>
+  </body>
+</html>

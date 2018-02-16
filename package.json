@@ -1,0 +1,34 @@
+{
+  "name": "ethaxe",
+  "version": "1.0.0",
+  "description": "Lambda functions for your ethOS mining rig",
+  "main": "handler.js",
+  "scripts": {
+    "build": "cd gdax-node && yarn && cd .. && yarn",
+    "deploy": "serverless deploy --stage prod",
+    "test": "serverless invoke local -f statusPage --stage prod --data 'test'"
+  },
+  "keywords": [
+    "mining",
+    "crypto",
+    "ethereum",
+    "rig",
+    "lambda",
+    "aws",
+    "serverless",
+    "status",
+    "page",
+    "nanopool",
+    "gdax",
+    "automation"
+  ],
+  "author": "Alfonso Gober <alfonso.gober.jr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bluebird": "^3.5.1",
+    "handlebars": "^4.0.11",
+    "lodash": "^4.17.5",
+    "moment": "^2.20.1"
+  }
+}
