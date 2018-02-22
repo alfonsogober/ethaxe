@@ -45,6 +45,10 @@ If you'd like to keep track of how close your rig is to paying for itself, you c
 
 This is the percentage of your mined Ethereum you'd like to auto-convert into USD when the payout is detected. 
 
+### Time Zone
+
+Set your [moment.js](https://momentjs.com/timezone/) time zone. Default is `America/New_York`.
+
 You're all set! Now you're ready to deploy your functions. 
 
 ## Functions

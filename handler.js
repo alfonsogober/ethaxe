@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Promise = require('bluebird')
 const _ = require('lodash')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const axios = require('axios')
 const Gdax = require('./gdax-node')
 const authedClient = new Gdax.AuthenticatedClient(process.env.GDAX_API_KEY, process.env.GDAX_API_SECRET, process.env.GDAX_PASSPHRASE, process.env.GDAX_URI)
@@ -23,7 +23,6 @@ module.exports.nanopoolScan = (event, context, callback) => {
             }
             return authedClient.sell(params)
               .then((result) => {
-                let symbol = process.env.FIAT_TYPE === 'EUR' ? '€' : (process.env.FIAT_TYPE === 'CNY' ? '¥' : (process.env.FIAT_TYPE === 'RUR' ? '₽' : '$'))
                 console.log(`Successfully sold ${size} ETH: `, result)
                 return authedClient.getPaymentMethods()
               })
@@ -74,7 +73,7 @@ module.exports.statusPage = (event, context, callback) => {
       let payout = (res[3].data.data).payout
       let history = _.map(res[4].data.data, (item) => {
         item.unix = item.date * 1000
-        item.date = moment(item.date * 1000).format('MM/DD/YYYY hh:mm:ss a')
+        item.date = moment(item.date * 1000).tz(process.env.TIMEZONE).format('MM/DD/YYYY hh:mm:ss a')
         return item
       })
       .sort(function (a, b) {
@@ -93,7 +92,7 @@ module.exports.statusPage = (event, context, callback) => {
       return axios(`https://api.nanopool.org/v1/eth/approximated_earnings/${stats.avgHashrate.h6}`)
         .then(({ data }) => {
           let approxEarnings = data.data
-          let timeToEven = moment().to(moment().add(process.env.MINING_INVESTMENT / approxEarnings.day[fiat], 'days'))
+          let timeToEven = moment().tz(process.env.TIMEZONE).to(moment().tz(process.env.TIMEZONE).add(process.env.MINING_INVESTMENT / approxEarnings.day[fiat], 'days'))
           let body = `
 <!doctype html>
 <html>
@@ -107,13 +106,13 @@ module.exports.statusPage = (event, context, callback) => {
       <h1 class="title"><strong>Total Revenue:</strong> ${symbol}${(totalPaid * price).toFixed(2)} (Ξ${totalPaid})</h1>
       <p><strong>ETH/${process.env.FIAT_TYPE} Price:</strong> ${symbol}${(price).toFixed(2)}</p>
       <p><strong>Unpaid Balance:</strong> ${symbol}${(stats.balance * price).toFixed(2)} (Ξ${stats.balance})</p>
-      <p><strong>Next Payout:</strong> ${moment().add((payout - stats.balance) / approxEarnings.minute.coins, 'minutes').calendar()} (${moment().add((payout - stats.balance) / approxEarnings.minute.coins, 'minutes').fromNow()} - ${((stats.balance / payout) * 100).toFixed(1)}% complete)</p>
+      <p><strong>Next Payout:</strong> ${moment().tz(process.env.TIMEZONE).add((payout - stats.balance) / approxEarnings.minute.coins, 'minutes').calendar()} (${moment().tz(process.env.TIMEZONE).add((payout - stats.balance) / approxEarnings.minute.coins, 'minutes').fromNow()} - ${((stats.balance / payout) * 100).toFixed(1)}% complete)</p>
       <a href="https://eth.nanopool.org/account/${process.env.ETH_WALLET_ADDRESS}">Nanopool Dashboard</a> | <a href="${process.env.ETHOS_DASHBOARD}">EthOS Dashboard</a>
       <br />
       <hr />
       <h2 class="subtitle">Mining Investment</h2>
       <p><strong>Total Investment:</strong> ${symbol}${process.env.MINING_INVESTMENT}</p>
-      <p><strong>Break Even:</strong> ${moment().add(process.env.MINING_INVESTMENT / approxEarnings.day[fiat], 'days').calendar()} (${timeToEven} - ${(((totalPaid * price) / process.env.MINING_INVESTMENT) * 100).toFixed(2)}% complete)</p>
+      <p><strong>Break Even:</strong> ${moment().tz(process.env.TIMEZONE).add(process.env.MINING_INVESTMENT / approxEarnings.day[fiat], 'days').calendar()} (${timeToEven} - ${(((totalPaid * price) / process.env.MINING_INVESTMENT) * 100).toFixed(2)}% complete)</p>
       <p><strong>Daily Earnings:</strong> ${symbol}${(approxEarnings.day[fiat]).toFixed(2)} | <strong>Weekly Earnings:</strong> ${symbol}${(approxEarnings.week[fiat]).toFixed(2)} | <strong>Monthly Earnings:</strong> ${symbol}${(approxEarnings.month[fiat]).toFixed(2)}</p>
       <h2 class="subtitle">Hash Rate</h2>
       <svg id="hashrate" width="960" height="250"></svg>
@@ -123,11 +122,11 @@ module.exports.statusPage = (event, context, callback) => {
       ${stats.workers.map((worker) => `<div>
         <p><strong>ID:</strong> ${worker.id}</p>
         <p><strong>Current Hash Rate:</strong> ${worker.hashrate}</p>
-        <p><strong>Last Share:</strong> ${moment(worker.lastShare).fromNow()}</p>
+        <p><strong>Last Share:</strong> ${moment(worker.lastShare).tz(process.env.TIMEZONE).fromNow()}</p>
       </div>`)}
       <h2 class="subtitle">Payments (${payments.length})</h2>
       ${payments.map((payment) => `<div>
-        <p><strong>Date:</strong> ${moment(payment.date * 1000).calendar()}</p>
+        <p><strong>Date:</strong> ${moment(payment.date * 1000).tz(process.env.TIMEZONE).calendar()}</p>
         <p><strong>txHash:</strong> ${payment.txHash}</p>
         <p><strong>Amount:</strong> Ξ${payment.amount.toFixed(5)} (${symbol}${(payment.amount * price).toFixed(2)})</p>
         <p><strong>Confirmed:</strong> ${payment.confirmed}</p>

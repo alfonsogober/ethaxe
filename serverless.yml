@@ -20,6 +20,7 @@ provider:
     ETHOS_DASHBOARD: ${file(./credentials.json):ethosDashboard}
     SELL_PERCENTAGE: ${file(./credentials.json):sellPercentage}
     FIAT_TYPE: 'USD'
+    TIMEZONE: 'America/New_York'
   iamRoleStatements:
     - Effect: "Allow"
       Action:
